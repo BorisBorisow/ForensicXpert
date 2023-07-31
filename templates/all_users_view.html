@@ -1,0 +1,47 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="{% static 'css/all-users-view.css' %}">
+
+</head>
+
+<body>
+
+
+
+  <div class="grid-container">
+    <div class="grid-item">
+      <div class="card">
+        <img src="{% static "images/administrator.png" %}" alt="John" style="width:100%">
+{#        <p class="title">ADMIN</p>#}
+        <p><button><a href="#">ADMIN</a></button></p>
+      </div>
+
+    </div>
+
+    <div class="grid-item">
+      <div class="card">
+        <img src="{% static "images/detective.png" %}" alt="John" style="width:100%">
+{#        <p class="title">FORENSIC EXPERT</p>#}
+        <p><button><a href="#">EXPERT</a></button></p>
+      </div>
+    </div>
+
+    <div class="grid-item">
+      <div class="card">
+        <img src="{% static "images/client.jpg" %}" alt="John" style="width:100%">
+{#        <p class="title">CLIENT</p>#}
+        <p><button><a href="#">CLIENT</a></button></p>
+      </div>
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>

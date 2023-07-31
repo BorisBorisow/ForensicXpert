@@ -1,0 +1,25 @@
+{% extends 'web/mandate_list.html' %}
+{% load crispy_forms_filters %}
+
+{% load crispy_forms_tags %}
+
+{% block nav-content %}
+    <i class="fas fa-user-check">&nbsp;&nbsp; MANDATE</i>
+{% endblock nav-content %}
+{% block content %}
+    <div class="container mt-5" style="width: 85%;">
+        <div class="card p-3 border-dark">
+            <form method="POST">
+                {% csrf_token %}
+                    {% for f in form %}
+                    {{ f|as_crispy_field }}
+                    {% endfor %}
+                <br><hr>
+                <div class="d-grid gap-2 mb-3">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="{% url 'mandate_list' %}" class="btn btn-secondary">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
