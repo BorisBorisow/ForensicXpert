@@ -1,0 +1,72 @@
+{% extends 'admin_templates/admin_base.html' %}
+{% block content %}
+{%load static%}
+
+<head>
+  <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+  <style media="screen">
+    a:link {
+      text-decoration: none;
+    }
+
+    h6 {
+      text-align: center;
+    }
+
+    .row {
+      margin: 100px;
+    }
+  </style>
+</head>
+
+<div class="container">
+  <div class="panel panel-primary">
+    <div class="panel-heading">
+      <h6 class="panel-title">Contact Person to Client</h6>
+    </div>
+    <table class="table table-hover" id="dev-table">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Name</th>
+          <th>Gender</th>
+          <th>Division</th>
+          <th>Role</th>
+          <th>Email</th>
+          <th>Comments</th>
+          <th>Update</th>
+          <th>Delete</th>
+        </tr>
+      </thead>
+      {% for c in clients %}
+      <tr>
+        <td> {{c.id}}</td>
+        <td> {{c.title}}</td>
+        <td> {{c.get_name}}</td>
+        <td>{{c.gender}}</td>
+        <td>{{c.division}}</td>
+        <td>{{c.role}}</td>
+        <td>{{c.user.email}}</td>
+        <td>{{c.comments}}</td>
+        <td><a class="btn btn-primary btn-xs" href="{% url 'admin_update_client' pk=c.pk %}"><span class="glyphicon glyphicon-edit"></span></a></td>
+        <td><a class="btn btn-danger btn-xs" href="{% url 'admin_delete_client' pk=c.pk %}"><span class="glyphicon glyphicon-trash"></span></a></td>
+      </tr>
+      {% endfor %}
+    </table>
+  </div>
+</div>
+
+ {% for msg in messages %}
+            {% if msg.tags == 'success' %}
+                <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+                <script>
+                    let m = "{{ msg }}";
+                    swal("Perfect!", m, "success")
+                </script>
+            {% endif %}
+        {% endfor %}
+{% endblock content %}

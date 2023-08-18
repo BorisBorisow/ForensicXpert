@@ -1,0 +1,32 @@
+{% extends 'employee/employee_base.html' %}
+{% load static %}
+{% block content %}
+{%include 'employee/employee_dashboard_cards.html'%}
+<br><br><br><br>
+<div class="container">
+  <div class="row">
+    <div class="panel panel-primary" style="margin-left:15%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">Recent Appointments For You</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Denotation</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        {% for c in client %}
+        <tr>
+          <td>{{c.id}}</td>
+          <td>{{c.denotation}}</td>
+          <td>{{c.description}}</td>
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,76 @@
+{% extends 'admin_templates/admin_base.html' %}
+{% load static %}
+{% block content %}
+{%include 'admin_templates/admin_cards.html'%}
+<br><br><br><br>
+
+<div class="container">
+  <div class="row">
+    <div class="panel panel-primary col-md-5" style="margin-left:2%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">Clients to approve</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>E-Mail</th>
+            <th>Contact to</th>
+            <th>Status</th>
+
+          </tr>
+        </thead>
+        {% for c in contact_persons %}
+        <tr>
+          <td>{{c.id}}</td>
+          <td>{{c.get_name}}</td>
+          <td>{{c.user}}</td>
+          <td>{{c.institution_free}}</td>
+          {%if c.user.is_active%}
+          <td> <span class="label label-primary">Аpproved</span></td>
+          {% else %}
+          <td> <span class="label label-success">On Hold</span></td>
+          {% endif %}
+
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+    <div class="panel panel-primary col-md-5" style="margin-left:5%;">
+      <div class="panel-heading" style="text-align:center;">
+        <h6 class="panel-title">Employees to approve</h6>
+      </div>
+      <table class="table table-hover" id="dev-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>E-Mail</th>
+            <th>Mobile</th>
+            <th>Status</th>
+
+          </tr>
+        </thead>
+        {% for e in employees %}
+        <tr>
+          <td>{{e.id}}</td>
+          <td>{{e.get_name}}</td>
+          <td>{{e.user}}</td>
+          <td>{{e.mobile}}</td>
+          {%if e.user.is_active%}
+          <td> <span class="label label-primary">Аpproved</span></td>
+          {% else %}
+          <td> <span class="label label-success">On Hold</span></td>
+          {% endif %}
+
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load crispy_forms_filters %}
+
+{% block content %}
+        <form
+            action="{% url 'register_user' %}"
+            method="post">
+
+             {% for f in form %}
+                <div class="col-md-6">
+
+              <div class="form-group">
+                  {{ f|as_crispy_field }}
+              </div>
+
+            </div>
+            {% endfor %}
+
+        <div>
+            <button>Register</button>
+            or
+            <a href="{% url 'login_user' %}">Login</a>
+        </div>
+
+        {% csrf_token %}
+    </form>
+{% endblock %}
+
+

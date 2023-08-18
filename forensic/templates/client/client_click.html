@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<br>
+<br>
+
+<div class="jumbotron" style="margin-bottom:0px;">
+  <h1 class="display-4" style="text-align:center;">Dear, Client</h1>
+  <p class="lead">welcome to ForensicExpert Solutions!</p>
+  <hr class="my-4">
+  <p>You can access various features after Registration/Login.</p>
+  <p class="lead">
+    <a class="btn btn-primary btn-lg" href="{% url 'register_client' %}" role="button">Register Your Account</a>
+    <a class="btn btn-primary btn-lg" href="{% url 'client_login' %}" role="button">Login</a>
+  </p>
+</div>
+
+{% endblock content %}

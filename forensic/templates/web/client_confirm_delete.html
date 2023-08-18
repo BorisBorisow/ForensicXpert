@@ -1,0 +1,26 @@
+{% extends 'web/clients_list.html' %}
+
+{% block content %}
+
+<br>
+<div class="container mt-5" style="width: 450px">
+    <div class="card p-3 border-dark">
+        <h6 class="modal-title">
+            <i class="fas fa-trash-alt">&nbsp;&nbsp; DELETE CLIENT</i>
+        </h6>
+        <div class="text-center text-danger"><i class="far fa-times-circle fa-5x mb-4 mt-2"></i></div>
+        <div class="text-center text-danger">
+        <span>DO YOU WANT TO DELETE THIS CLIENT?</span>
+        <div class="text-dark mt-3 mb-2">Client: <strong>{{ client.denotation }}</strong></div>
+        </div>
+        <hr>
+        <form method="POST">
+            {% csrf_token %}
+            <input class="btn btn-outline.danger btn-sm ms-2" type="submit" value="Delete" style="float: right;">
+            <a href="{% url 'clients_list' %}" class="btn btn-secondary btn-sm" style="float: right;">Cancel</a>
+        </form>
+    </div>
+    <br><hr><br>
+    <span class="text-danger">If you proceed, this data will become unrecoverable!</span>
+</div>
+{%endblock content %}
